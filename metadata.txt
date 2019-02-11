@@ -9,8 +9,7 @@
 [general]
 name=ESTIMAP Recreation
 qgisMinimumVersion=3.0
-description=Ecosystem services mapping at
-European scale (ESTIMAP)- Recreation
+description=Ecosystem services mapping at European scale (ESTIMAP)- Recreation
 version=1.1
 author=Natcapes
 email=nik@nikosalexandris.net
@@ -33,7 +32,7 @@ homepage=https://gitlab.com/natcapes/r.estimap.recreation
 category=Analysis
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False

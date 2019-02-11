@@ -31,31 +31,32 @@ __copyright__ = '(C) 2019 by Natcapes'
 
 __revision__ = '$Format:%H$'
 
-from qgis.core import QgsProcessingProvider
-from .estimap_recreation_algorithm import EstimapRecreationAlgorithm
+import os
 
+from qgis.core import Qgis, QgsProcessingProvider, QgsMessageLog
+from processing.algs.grass7.Grass7AlgorithmProvider import Grass7AlgorithmProvider
+from processing.algs.grass7.Grass7Algorithm import Grass7Algorithm
 
-class EstimapRecreationProvider(QgsProcessingProvider):
+class EstimapRecreationProvider(Grass7AlgorithmProvider):
 
     def __init__(self):
-        QgsProcessingProvider.__init__(self)
+        super().__init__()
 
-        # Load algorithms
-        self.alglist = [EstimapRecreationAlgorithm()]
-
-    def unload(self):
-        """
-        Unloads the provider. Any tear-down steps required by the provider
-        should be implemented here.
-        """
-        pass
-
-    def loadAlgorithms(self):
-        """
-        Loads all algorithms belonging to this provider.
-        """
-        for alg in self.alglist:
-            self.addAlgorithm( alg )
+    def createAlgsList(self):
+        algs = []
+        folder = os.path.join(os.path.dirname(__file__), 'description')
+        for descriptionFile in os.listdir(folder):
+            if descriptionFile.endswith('txt'):
+                try:
+                    alg = Grass7Algorithm(os.path.join(folder, descriptionFile))
+                    if alg.name().strip() != '':
+                        algs.append(alg)
+                    else:
+                        QgsMessageLog.logMessage(self.tr('Could not open GRASS GIS 7 algorithm: {0}').format(descriptionFile), self.tr('Processing'), Qgis.Critical)
+                except Exception as e:
+                    QgsMessageLog.logMessage(
+                        self.tr('Could not open GRASS GIS 7 algorithm: {0}\n{1}').format(descriptionFile, str(e)), self.tr('Processing'), Qgis.Critical)
+        return algs
 
     def id(self):
         """

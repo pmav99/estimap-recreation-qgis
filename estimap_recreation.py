@@ -36,7 +36,7 @@ import sys
 import inspect
 
 from qgis.core import QgsProcessingAlgorithm, QgsApplication
-from .estimap_recreation_provider import EstimapRecreationProvider
+from estimap_recreation.estimap_recreation_provider import EstimapRecreationProvider
 
 cmd_folder = os.path.split(inspect.getfile(inspect.currentframe()))[0]
 
