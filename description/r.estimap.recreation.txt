@@ -38,8 +38,8 @@ QgsProcessingParameterRasterDestination|unmet|Output map of unmet demand distrib
 QgsProcessingParameterRasterDestination|flow|Output map of flow|None|False
 QgsProcessingParameterFileDestination|supply|Output prefix for the file name of the supply table CSV|Txt files (*.txt)|None|False
 QgsProcessingParameterFileDestination|use|Output prefix for the file name of the supply table CSV|Txt file (*.txt)|None|False
-*QgsProcessingParameterSelection|metric|Distance metric to areas of highest recreation opportunity spectrum|euclidean;squared;maximum;manhattan;geodesic|0
-QgsProcessingParameterSelection|units|Units to report|mi;me;k;a;h;c;p|2
+*QgsProcessingParameterString|metric|Distance metric to areas of highest recreation opportunity spectrum [euclidean, squared, maximum, manhattan, geodesic]|euclidean|False|True
+QgsProcessingParameterString|units|Units to report [mi, me, k, a, h, c, p]|k|False|True
 QgsProcessingParameterString|timestamp|Timestamp|None|False|True
 QgsProcessingParameterBoolean|-e|Match computational region to extent of land use map|False
 *QgsProcessingParameterBoolean|-f|Filter maps in land and natural components before computing recreation maps|False
