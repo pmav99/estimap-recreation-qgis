@@ -1,7 +1,7 @@
 r.estimap.recreation
 Implementation of ESTIMAP to support mapping and modelling of ecosystem services (Zulian, 2014)
 Raster (r.*)
-QgsProcessingParameterRasterLayer|land|Input map scoring access to and suitability of land resources for recreation|None|False|
+QgsProcessingParameterRasterLayer|land|Input map scoring access to and suitability of land resources for recreation|None|False
 QgsProcessingParameterMultipleLayers|natural|Input maps scoring access to and quality of inland natural resources|3|None|False
 QgsProcessingParameterMultipleLayers|water|Input maps scoring access to and quality of water resources|3|None|False
 QgsProcessingParameterMultipleLayers|urban|Input maps scoring recreational value of urban surfaces|3|None|False
