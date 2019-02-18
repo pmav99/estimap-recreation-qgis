@@ -1,0 +1,48 @@
+r.estimap.recreation
+Implementation of ESTIMAP to support mapping and modelling of ecosystem services (Zulian, 2014)
+Raster (r.*)
+QgsProcessingParameterRasterLayer|land|Input map scoring access to and suitability of land resources for recreation|None|False|
+QgsProcessingParameterMultipleLayers|natural|Input maps scoring access to and quality of inland natural resources|3|None|False
+QgsProcessingParameterMultipleLayers|water|Input maps scoring access to and quality of water resources|3|None|False
+QgsProcessingParameterMultipleLayers|urban|Input maps scoring recreational value of urban surfaces|3|None|False
+QgsProcessingParameterMultipleLayers|infrastructure|Input maps scoring infrastructure to reach locations of recreation activities|3|None|False
+QgsProcessingParameterMultipleLayers|recreation|Input maps scoring recreational facilities, amenities and services|3|None|False
+*QgsProcessingParameterRasterLayer|landuse|Input land features map from which to derive suitability for recreation|None|False
+*QgsProcessingParameterFile|suitability_scores|Input recreational suitability scores for the categories of the 'landuse' map|QgsProcessingParameterFile.File|txt|None|True
+*QgsProcessingParameterRasterLayer|landcover|Input land cover map from which to derive cover percentages within zones of high recreational value|None|False
+*QgsProcessingParameterFile|land_classes|Input reclassification rules for the classes of the 'landcover' map|QgsProcessingParameterFile.File|txt|None|True
+*QgsProcessingParameterRasterLayer|lakes|Input map of inland waters resources for which to score accessibility|None|False
+*QgsProcessingParameterString|lakes_coefficients|Input distance function coefficients for the 'lakes' map|euclidean,1,30,0.008,1|False|True
+*QgsProcessingParameterRasterLayer|coastline|Input sea coast map for which to compute proximity|None|False
+*QgsProcessingParameterString|coastline_coefficients|Input distance function coefficients for the 'coastline' map|euclidean,1,30,0.008,1|False|True
+*QgsProcessingParameterRasterLayer|coast_geomorphology|Input map scoring recreation potential in coast|None|False
+*QgsProcessingParameterRasterLayer|bathing_water|Input bathing water quality map|None|False
+*QgsProcessingParameterString|bathing_coefficients|Input distance function coefficients for the 'bathing_water' map|euclidean,1,5,0.01101|False|True
+*QgsProcessingParameterRasterLayer|protected|Input protected areas map|None|False
+*QgsProcessingParameterString|protected_scores|Input recreational value scores for the classes of the 'protected' map|11:11:0,12:12:0.6,2:2:0.8,3:3:0.6,4:4:0.6,5:5:1,6:6:0.8,7:7:0,8:8:0,9:9:0|False|True
+*QgsProcessingParameterRasterLayer|artificial|Input map of artificial surfaces|None|False
+*QgsProcessingParameterString|artificial_distances|Input distance classification rules|0:500:1,500.000001:1000:2,1000.000001:5000:3,5000.000001:10000:4,10000.00001:*:5|False|True
+*QgsProcessingParameterRasterLayer|roads|Input map of primary road network|None|False
+*QgsProcessingParameterString|roads_distances|Input distance classification rules|0:500:1,500.000001:1000:2,1000.000001:5000:3,5000.000001:10000:4,10000.00001:*:5|False|True
+QgsProcessingParameterRasterLayer|mask|A raster map to apply as a MASK|None|False
+QgsProcessingParameterRasterDestination|potential|Output map of recreation potential|None|True
+*QgsProcessingParameterRasterDestination|opportunity|Output intermediate map of recreation opportunity|None|True
+QgsProcessingParameterRasterDestination|spectrum|Output map of recreation spectrum|None|False
+*QgsProcessingParameterString|spectrum_distances|Input distance classification rules for the 'spectrum' map|0:1000:1,1000:2000:2,2000:3000:3,3000:4000:4,4000:*:5|False|True
+QgsProcessingParameterRasterLayer|base|Input base map for zonal statistics|None|False
+QgsProcessingParameterFeatureSource|base_vector|Name of input vector map|2|None|False
+QgsProcessingParameterRasterLayer|aggregation|Input map of regions over which to aggregate the actual flow|None|False
+QgsProcessingParameterRasterLayer|population|Input map of population density|
+QgsProcessingParameterRasterDestination|demand|Output map of demand distribution|None|False
+QgsProcessingParameterRasterDestination|unmet|Output map of unmet demand distribution|None|False
+QgsProcessingParameterRasterDestination|flow|Output map of flow|None|False
+QgsProcessingParameterFileDestination|supply|Output prefix for the file name of the supply table CSV|Txt files (*.txt)|None|False
+QgsProcessingParameterFileDestination|use|Output prefix for the file name of the supply table CSV|Txt file (*.txt)|None|False
+*QgsProcessingParameterSelection|metric|Distance metric to areas of highest recreation opportunity spectrum|euclidean;squared;maximum;manhattan;geodesic|0
+QgsProcessingParameterSelection|units|Units to report|mi;me;k;a;h;c;p|2
+QgsProcessingParameterString|timestamp|Timestamp|None|False|True
+QgsProcessingParameterBoolean|-e|Match computational region to extent of land use map|False
+*QgsProcessingParameterBoolean|-f|Filter maps in land and natural components before computing recreation maps|False
+*QgsProcessingParameterBoolean|-s|Save temporary maps for debugging|False
+*QgsProcessingParameterBoolean|-i|Print out citation and other information|False
+QgsProcessingParameterBoolean|-p|Print out results (i.e. supply table), don't export to file|False
