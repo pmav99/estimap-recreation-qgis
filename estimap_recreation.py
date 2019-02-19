@@ -23,9 +23,9 @@ European scale (ESTIMAP)- Recreation
  ***************************************************************************/
 """
 
-__author__ = 'Natcapes'
+__author__ = 'NATCAPES'
 __date__ = '2019-02-08'
-__copyright__ = '(C) 2019 by Natcapes'
+__copyright__ = '(C) 2019 by NATCAPES'
 
 # This will get replaced with a git SHA1 when you do a git archive
 

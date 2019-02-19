@@ -5,7 +5,7 @@
 #							 -------------------
 #		begin				: 2019-02-08
 #		git sha				: $Format:%H$
-#		copyright			: (C) 2019 by Natcapes
+#		copyright			: (C) 2019 by NATCAPES
 #		email				: nik@nikosalexandris.net
 # ***************************************************************************/
 #
