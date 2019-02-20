@@ -64,7 +64,7 @@ class EstimapRecreationProvider(Grass7AlgorithmProvider):
         string should be a unique, short, character only string, eg "qgis" or
         "gdal". This string should not be localised.
         """
-        return 'Natcapes'
+        return 'NATCAPES'
 
     def name(self):
         """
@@ -73,7 +73,7 @@ class EstimapRecreationProvider(Grass7AlgorithmProvider):
 
         This string should be short (e.g. "Lastools") and localised.
         """
-        return self.tr('Natcapes')
+        return self.tr('NATCAPES')
 
     def longName(self):
         """
