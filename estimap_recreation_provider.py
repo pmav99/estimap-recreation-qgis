@@ -37,26 +37,10 @@ from qgis.core import Qgis, QgsProcessingProvider, QgsMessageLog
 from processing.algs.grass7.Grass7AlgorithmProvider import Grass7AlgorithmProvider
 from processing.algs.grass7.Grass7Algorithm import Grass7Algorithm
 
+
 class EstimapRecreationProvider(Grass7AlgorithmProvider):
 
-    def __init__(self):
-        super().__init__()
-
-    def createAlgsList(self):
-        algs = []
-        folder = os.path.join(os.path.dirname(__file__), 'description')
-        for descriptionFile in os.listdir(folder):
-            if descriptionFile.endswith('txt'):
-                try:
-                    alg = Grass7Algorithm(os.path.join(folder, descriptionFile))
-                    if alg.name().strip() != '':
-                        algs.append(alg)
-                    else:
-                        QgsMessageLog.logMessage(self.tr('Could not open GRASS GIS 7 algorithm: {0}').format(descriptionFile), self.tr('Processing'), Qgis.Critical)
-                except Exception as e:
-                    QgsMessageLog.logMessage(
-                        self.tr('Could not open GRASS GIS 7 algorithm: {0}\n{1}').format(descriptionFile, str(e)), self.tr('Processing'), Qgis.Critical)
-        return algs
+    descriptionFolder = os.path.join(os.path.dirname(__file__), 'description')
 
     def id(self):
         """
